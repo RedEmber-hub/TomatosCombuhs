@@ -1,26 +1,14 @@
-import './HomePage.scss';
-import { Header } from '../../molecules/Header';
-import { Divider } from '../../atoms/Divider';
-import { ChipsGroup } from '../../molecules/ChipsGroup';
 import { useState } from 'react';
-import { MOCK_COMBOS } from '../../../mocks/combuh';
-import { Combuh } from '../../molecules/Combuh';
+import './HomePage.scss';
+
+import { filters } from '@/configs/filters';
+import { Header } from '@/components/molecules/Header';
+import { ChipsGroup } from '@/components/molecules/ChipsGroup';
+import { Combuh } from '@/components/molecules/Combuh';
+import { MOCK_COMBOS } from '@/mocks/combuh';
+import { BandGroup } from '../BandGroup';
 
 export default function HomePage() {
-  const filtersTribeArray = [
-    'Все',
-    'Звери',
-    'Мурлоки',
-    'Нежить',
-    'Элементали',
-    'Пираты',
-    'Свинобразы',
-    'Демоны',
-    'Драконы',
-    'Механизмы',
-    'Наги',
-  ];
-  const filtersGameTypeArray = ['Все', 'Поля сражений', 'Арена', 'Дуэли'];
   const [selectedTribe, setSelectedTribe] = useState('Все');
   const [selectedGameType, setSelectedGameType] = useState('Все');
 
@@ -30,25 +18,30 @@ export default function HomePage() {
         <Header />
       </div>
 
-      <Divider />
+      {/* <Divider /> */}
+
+      <div className="homePage__background">
+        <BandGroup />
+      </div>
+
+      <div className="homePage__info">
+        <h2 className="homePage__title">КОМБУХИ</h2>
+        <h2 className="homePage__title">ТОМАТОСА</h2>
+
+        <p className="homePage__description">Крупнейшая библиотека безумных комбо Hearthstone</p>
+      </div>
 
       <div className="homePage__main">
-        <div className="homePage__info">
-          <h2 className="homePage__title">КОМБУХИ ТОМАТОСА</h2>
-
-          <p className="homePage__description">Крупнейшая библиотека безумных комбо Hearthstone</p>
-        </div>
-
         <div className="homePage__filters">
           <ChipsGroup
-            filters={filtersTribeArray}
+            filters={filters.category}
             selected={selectedTribe}
             onChange={setSelectedTribe}
             backgroundColor="green"
             hoverBorderColor="green"
           />
           <ChipsGroup
-            filters={filtersGameTypeArray}
+            filters={filters.gameType}
             selected={selectedGameType}
             onChange={setSelectedGameType}
             backgroundColor="yellow"
