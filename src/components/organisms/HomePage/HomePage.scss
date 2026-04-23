@@ -1,0 +1,56 @@
+.homePage {
+  &__header {
+    padding: 0 32px;
+    margin: 0 auto;
+
+    max-width: 1216px;
+  }
+
+  &__main {
+    padding: 64px 32px;
+    margin: 0 auto;
+    max-width: 1216px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    margin: 0 0 48px;
+  }
+
+  &__title {
+    font-family: Inter, sans-serif;
+    color: rgb(255, 255, 255);
+    font-size: 72px;
+    font-weight: 900;
+    line-height: 72px;
+  }
+
+  &__description {
+    font-family: Inter, sans-serif;
+    color: rgb(161, 161, 161);
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  &__filters {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0 0 32px;
+  }
+
+  &__table {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+}

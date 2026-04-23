@@ -1,0 +1,33 @@
+.chips {
+  padding: 8px 16px;
+  background-color: rgb(26, 26, 26);
+  color: rgb(255, 255, 255);
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  border: 1px solid rgb(65, 65, 65);
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &--hover-green:hover {
+    border-color: rgb(16, 185, 129);
+  }
+
+  &--hover-yellow:hover {
+    border-color: rgb(245, 158, 11);
+  }
+
+  &--active {
+    color: rgb(10, 10, 10);
+    &-green {
+      background-color: rgb(16, 185, 129);
+    }
+    &-yellow {
+      background-color: rgb(245, 158, 11);
+    }
+  }
+}
