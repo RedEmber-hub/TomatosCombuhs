@@ -9,13 +9,12 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler", // ← вместо "node"
     "resolveJsonModule": true,
     "jsx": "react-jsx",
     "types": ["vite/client"],
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"] // <--- Путь теперь относительно корня
     }
   },
   "include": ["src"]

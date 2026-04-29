@@ -12,7 +12,7 @@
     left: 0;
     width: 100%;
     z-index: 0;
-    height: 100%;
+    pointer-events: none;
   }
 
   &__info {
@@ -22,7 +22,7 @@
     justify-content: center;
     height: 880px;
     gap: 16px;
-    margin: 0 0 260px;
+    margin: 0 0 200px;
     position: relative;
     z-index: 1;
     pointer-events: none;
@@ -70,5 +70,10 @@
     display: flex;
     flex-direction: column;
     gap: 22px;
+  }
+
+  &__footer {
+    width: 100%;
+    height: 200px;
   }
 }

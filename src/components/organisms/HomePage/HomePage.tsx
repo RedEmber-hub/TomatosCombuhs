@@ -7,10 +7,18 @@ import { ChipsGroup } from '@/components/molecules/ChipsGroup';
 import { Combuh } from '@/components/molecules/Combuh';
 import { MOCK_COMBOS } from '@/mocks/combuh';
 import { BandGroup } from '../BandGroup';
+import { Footer } from '@/components/molecules/Footer';
 
 export default function HomePage() {
   const [selectedTribe, setSelectedTribe] = useState('Все');
   const [selectedGameType, setSelectedGameType] = useState('Все');
+
+  const filtredCombo = MOCK_COMBOS.filter((combo) => {
+    const tribeMatch = selectedTribe === 'Все' || combo.tribe === selectedTribe;
+    const gameTypeMatch = selectedGameType === 'Все' || combo.gameType === selectedGameType;
+    return tribeMatch && gameTypeMatch;
+    console.log('ggbcsjds');
+  });
 
   return (
     <div className="homePage">
@@ -34,23 +42,23 @@ export default function HomePage() {
       <div className="homePage__main">
         <div className="homePage__filters">
           <ChipsGroup
-            filters={filters.category}
-            selected={selectedTribe}
-            onChange={setSelectedTribe}
-            backgroundColor="green"
-            hoverBorderColor="green"
-          />
-          <ChipsGroup
             filters={filters.gameType}
             selected={selectedGameType}
             onChange={setSelectedGameType}
             backgroundColor="yellow"
             hoverBorderColor="yellow"
           />
+          <ChipsGroup
+            filters={filters.category}
+            selected={selectedTribe}
+            onChange={setSelectedTribe}
+            backgroundColor="green"
+            hoverBorderColor="green"
+          />
         </div>
 
         <div className="homePage__table">
-          {MOCK_COMBOS.map((combo) => (
+          {filtredCombo.map((combo) => (
             <Combuh
               key={combo.id}
               tribe={combo.tribe}
@@ -62,6 +70,10 @@ export default function HomePage() {
               description={`Комбуха с ${combo.tribe}`}
             />
           ))}
+        </div>
+
+        <div className="homePage__footer">
+          <Footer />
         </div>
       </div>
     </div>

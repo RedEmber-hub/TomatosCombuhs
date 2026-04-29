@@ -1,6 +1,7 @@
 {
   "name": "tomatoscombuhs",
   "private": true,
+  "homepage": "https://RedEmber-hub.github.io/TomatosCombuhs",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

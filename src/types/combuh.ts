@@ -1,4 +1,4 @@
-type GameType = 'Поля сражений' | 'Арена';
+type GameType = 'Поля сражений' | 'Арена' | 'Дуэли';
 type TribeType = 'Все' | 'Мурлоки' | 'Звери' | 'Нежить' | 'Элементали' | 'Пираты' | 'Смешанное';
 
 export interface CombuhInterface {
