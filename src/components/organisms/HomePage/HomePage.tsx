@@ -36,10 +36,25 @@ export default function HomePage() {
         <h2 className="homePage__title">КОМБУХИ</h2>
         <h2 className="homePage__title">ТОМАТОСА</h2>
 
-        <p className="homePage__description">Крупнейшая библиотека безумных комбо Hearthstone</p>
+        <p className="homePage__description">Контент, гайды и безумные сборки по Hearthstone</p>
       </div>
 
       <div className="homePage__main">
+        <div className="homePage__last-video">
+          <div className="homePage__last-video-header">
+            <h2 className="homePage__last-video-title">Последнее видео</h2>
+            <p className="homePage__last-video-subtitle">Cвежее с канала Томатоса</p>
+          </div>
+
+          <div className="homePage__last-video-player" />
+
+          <div className="homePage__last-video-meta">
+            <h3 className="homePage__last-video-video-title">Название последнего видео</h3>
+
+            <p className="homePage__last-video-description">Краткое описание видео</p>
+          </div>
+        </div>
+
         <div className="homePage__filters">
           <ChipsGroup
             filters={filters.gameType}
@@ -71,10 +86,10 @@ export default function HomePage() {
             />
           ))}
         </div>
+      </div>
 
-        <div className="homePage__footer">
-          <Footer />
-        </div>
+      <div className="homePage__footer">
+        <Footer />
       </div>
     </div>
   );
