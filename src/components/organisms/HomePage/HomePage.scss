@@ -22,7 +22,7 @@
     justify-content: center;
     height: 880px;
     gap: 16px;
-    margin: 0 0 200px;
+    margin: 0 0 100px;
     position: relative;
     z-index: 1;
     pointer-events: none;
@@ -95,6 +95,11 @@
     background-color: oklch(0.21 0.034 264.665);
 
     margin: 0 0 24px;
+  }
+
+  &__iframe {
+    border: 0;
+    display: block;
   }
 
   &__last-video-video-title {

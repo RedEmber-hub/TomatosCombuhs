@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './HomePage.scss';
 
 import { filters } from '@/configs/filters';
@@ -8,6 +8,7 @@ import { Combuh } from '@/components/molecules/Combuh';
 import { MOCK_COMBOS } from '@/mocks/combuh';
 import { BandGroup } from '../BandGroup';
 import { Footer } from '@/components/molecules/Footer';
+import { fetchLatestVideo } from '@/api/youtube';
 
 export default function HomePage() {
   const [selectedTribe, setSelectedTribe] = useState('Все');
@@ -17,8 +18,21 @@ export default function HomePage() {
     const tribeMatch = selectedTribe === 'Все' || combo.tribe === selectedTribe;
     const gameTypeMatch = selectedGameType === 'Все' || combo.gameType === selectedGameType;
     return tribeMatch && gameTypeMatch;
-    console.log('ggbcsjds');
   });
+
+  const [video, setVideo] = useState<Video | null>(null);
+
+  type Video = {
+    title: string;
+    description: string;
+    videoId: string;
+  };
+
+  const channelId = 'UCtar_hVOtXpCdR0u3bKjtRA';
+
+  useEffect(() => {
+    fetchLatestVideo(channelId).then(setVideo);
+  }, []);
 
   return (
     <div className="homePage">
@@ -46,12 +60,21 @@ export default function HomePage() {
             <p className="homePage__last-video-subtitle">Cвежее с канала Томатоса</p>
           </div>
 
-          <div className="homePage__last-video-player" />
+          <div className="homePage__last-video-player">
+            {video && (
+              <iframe
+                className="homePage__iframe"
+                loading="lazy"
+                width="100%"
+                height="100%"
+                src={`https://www.youtube.com/embed/${video.videoId}`}
+                allowFullScreen
+              />
+            )}
+          </div>
 
           <div className="homePage__last-video-meta">
-            <h3 className="homePage__last-video-video-title">Название последнего видео</h3>
-
-            <p className="homePage__last-video-description">Краткое описание видео</p>
+            <h3 className="homePage__last-video-video-title">{video?.title}</h3>
           </div>
         </div>
 
