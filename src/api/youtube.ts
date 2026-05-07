@@ -1,6 +1,8 @@
+import { VideoResponse } from '@/types/videoКesponse';
+
 const API_KEY = 'AIzaSyBREHGSbC4mDknAD5Amw6HyzWXGpEtXlc8';
 
-export async function fetchLatestVideo(channelId: string) {
+export async function fetchLatestVideo(channelId: string): Promise<VideoResponse | null> {
   const playlistId = 'UU' + channelId.slice(2);
 
   const response = await fetch(

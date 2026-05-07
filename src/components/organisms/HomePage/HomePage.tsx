@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './HomePage.scss';
 
 import { filters } from '@/configs/filters';
@@ -9,10 +9,15 @@ import { MOCK_COMBOS } from '@/mocks/combuh';
 import { BandGroup } from '../BandGroup';
 import { Footer } from '@/components/molecules/Footer';
 import { fetchLatestVideo } from '@/api/youtube';
+import { Video } from '@/components/atoms/Video';
+import { useQuery } from '@tanstack/react-query';
+import { VideoResponse } from '@/types/videoКesponse';
+import { Pagination } from '@/components/molecules/Pagination';
 
 export default function HomePage() {
   const [selectedTribe, setSelectedTribe] = useState('Все');
   const [selectedGameType, setSelectedGameType] = useState('Все');
+  const [page, setPage] = useState(1);
 
   const filtredCombo = MOCK_COMBOS.filter((combo) => {
     const tribeMatch = selectedTribe === 'Все' || combo.tribe === selectedTribe;
@@ -20,27 +25,23 @@ export default function HomePage() {
     return tribeMatch && gameTypeMatch;
   });
 
-  const [video, setVideo] = useState<Video | null>(null);
+  const channelId = 'UCtar_hVOtXpCdR0u3bKjtRA'; //id канала Томатоса на YouTube
 
-  type Video = {
-    title: string;
-    description: string;
-    videoId: string;
-  };
+  const { data: video } = useQuery<VideoResponse | null>({
+    queryKey: ['latestVideo', channelId],
+    queryFn: () => fetchLatestVideo(channelId),
+    staleTime: 1000 * 60 * 10,
+  });
 
-  const channelId = 'UCtar_hVOtXpCdR0u3bKjtRA';
-
-  useEffect(() => {
-    fetchLatestVideo(channelId).then(setVideo);
-  }, []);
+  const pageSize = 2;
+  const paginatedCombos = filtredCombo.slice((page - 1) * pageSize, page * pageSize);
+  const totalPages = Math.ceil(filtredCombo.length / pageSize);
 
   return (
     <div className="homePage">
       <div className="homePage__header">
         <Header />
       </div>
-
-      {/* <Divider /> */}
 
       <div className="homePage__background">
         <BandGroup />
@@ -60,18 +61,7 @@ export default function HomePage() {
             <p className="homePage__last-video-subtitle">Cвежее с канала Томатоса</p>
           </div>
 
-          <div className="homePage__last-video-player">
-            {video && (
-              <iframe
-                className="homePage__iframe"
-                loading="lazy"
-                width="100%"
-                height="100%"
-                src={`https://www.youtube.com/embed/${video.videoId}`}
-                allowFullScreen
-              />
-            )}
-          </div>
+          <div className="homePage__last-video-player">{video ? <Video videoId={video.videoId} /> : null}</div>
 
           <div className="homePage__last-video-meta">
             <h3 className="homePage__last-video-video-title">{video?.title}</h3>
@@ -96,7 +86,7 @@ export default function HomePage() {
         </div>
 
         <div className="homePage__table">
-          {filtredCombo.map((combo) => (
+          {paginatedCombos.map((combo) => (
             <Combuh
               key={combo.id}
               tribe={combo.tribe}
@@ -108,6 +98,10 @@ export default function HomePage() {
               description={`Комбуха с ${combo.tribe}`}
             />
           ))}
+
+          <div className="homePage__pagination">
+            <Pagination page={page} totalPages={totalPages} setPage={setPage} />
+          </div>
         </div>
       </div>
 
