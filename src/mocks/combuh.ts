@@ -41,7 +41,6 @@ export const MOCK_COMBOS: CombuhInterface[] = [
     gameType: 'Поля сражений',
     hero: 'АФКа',
   },
-  ,
   {
     id: 5,
     imageUrl:
@@ -72,7 +71,6 @@ export const MOCK_COMBOS: CombuhInterface[] = [
     gameType: 'Поля сражений',
     hero: 'АФКа',
   },
-  ,
   {
     id: 8,
     imageUrl:
