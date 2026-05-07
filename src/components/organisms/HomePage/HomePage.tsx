@@ -11,7 +11,7 @@ import { Footer } from '@/components/molecules/Footer';
 import { fetchLatestVideo } from '@/api/youtube';
 import { Video } from '@/components/atoms/Video';
 import { useQuery } from '@tanstack/react-query';
-import { VideoResponse } from '@/types/videoКesponse';
+import { VideoResponse } from '@/types/videoResponse';
 import { Pagination } from '@/components/molecules/Pagination';
 
 export default function HomePage() {

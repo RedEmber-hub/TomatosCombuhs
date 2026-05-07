@@ -1,4 +1,4 @@
-import { VideoResponse } from '@/types/videoКesponse';
+import { VideoResponse } from '@/types/videoResponse';
 
 const API_KEY = 'AIzaSyBREHGSbC4mDknAD5Amw6HyzWXGpEtXlc8';
 
