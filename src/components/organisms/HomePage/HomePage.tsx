@@ -13,6 +13,7 @@ import { Video } from '@/components/atoms/Video';
 import { useQuery } from '@tanstack/react-query';
 import { VideoResponse } from '@/types/videoResponse';
 import { Pagination } from '@/components/molecules/Pagination';
+import { EmptyState } from '../EmptyState';
 
 export default function HomePage() {
   const [selectedTribe, setSelectedTribe] = useState('Все');
@@ -36,6 +37,8 @@ export default function HomePage() {
   const pageSize = 2;
   const paginatedCombos = filtredCombo.slice((page - 1) * pageSize, page * pageSize);
   const totalPages = Math.ceil(filtredCombo.length / pageSize);
+
+  const hasCombo = paginatedCombos.length > 0;
 
   return (
     <div className="homePage">
@@ -86,22 +89,36 @@ export default function HomePage() {
         </div>
 
         <div className="homePage__table">
-          {paginatedCombos.map((combo) => (
-            <Combuh
-              key={combo.id}
-              tribe={combo.tribe}
-              gameType={combo.gameType}
-              hero={combo.hero}
-              usedCards={combo.usedCards}
-              videoUrl={combo.videoUrl}
-              img={combo.imageUrl}
-              description={`Комбуха с ${combo.tribe}`}
-            />
-          ))}
+          {hasCombo ? (
+            <>
+              {paginatedCombos.map((combo) => (
+                <Combuh
+                  key={combo.id}
+                  tribe={combo.tribe}
+                  gameType={combo.gameType}
+                  hero={combo.hero}
+                  usedCards={combo.usedCards}
+                  videoUrl={combo.videoUrl}
+                  img={combo.imageUrl}
+                  description={`Комбуха с ${combo.tribe}`}
+                />
+              ))}
 
-          <div className="homePage__pagination">
-            <Pagination page={page} totalPages={totalPages} setPage={setPage} />
-          </div>
+              <div className="homePage__pagination">
+                <Pagination page={page} totalPages={totalPages} setPage={setPage} />
+              </div>
+            </>
+          ) : (
+            <EmptyState
+              title="Ни одной легендарной сборки"
+              description="Таверна молчит… попробуй другие условия поиска"
+              onReset={() => {
+                setSelectedTribe('Все');
+                setSelectedGameType('Все');
+                setPage(1);
+              }}
+            />
+          )}
         </div>
       </div>
 

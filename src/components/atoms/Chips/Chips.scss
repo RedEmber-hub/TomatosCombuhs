@@ -14,11 +14,13 @@
   }
 
   &--hover-green:hover {
-    border-color: rgb(16, 185, 129);
+    border-color: #3ddc84;
+    box-shadow: 0 0 12px rgba(61, 220, 132, 0.45);
   }
 
   &--hover-yellow:hover {
-    border-color: rgb(245, 158, 11);
+    border-color: #f6c343;
+    box-shadow: 0 0 14px rgba(246, 195, 67, 0.5);
   }
 
   &--active {
