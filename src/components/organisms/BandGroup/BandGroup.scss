@@ -15,4 +15,31 @@
     background: linear-gradient(to bottom, transparent, rgb(0, 0, 0));
     pointer-events: none;
   }
+
+  // tablet
+  @media (max-width: 768px) {
+    gap: 28px;
+
+    &::after {
+      height: 80%;
+    }
+  }
+
+  // mobile
+  @media (max-width: 640px) {
+    gap: 20px;
+
+    &::after {
+      height: 70%;
+    }
+  }
+
+  // small mobile
+  @media (max-width: 480px) {
+    gap: 16px;
+
+    &::after {
+      height: 60%;
+    }
+  }
 }

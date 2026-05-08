@@ -1,5 +1,5 @@
 import './Band.scss';
-import { Image } from '../../atoms/Image';
+import { Image } from '../Image';
 import { BandProps } from './Band.type';
 
 export default function Band({ imageUrls, reverseAnimation, isAnimated }: BandProps) {

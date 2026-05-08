@@ -56,4 +56,56 @@
       transform: translateX(0%);
     }
   }
+
+  @media (max-width: 1024px) {
+    gap: 28px;
+
+    &__item {
+      min-width: 320px;
+      height: 200px;
+    }
+
+    &--animated {
+      animation-duration: 55s;
+
+      &-reversed {
+        animation-duration: 55s;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    gap: 20px;
+
+    &__item {
+      min-width: 260px;
+      height: 170px;
+      border-radius: 8px;
+    }
+
+    &--animated {
+      animation-duration: 45s;
+
+      &-reversed {
+        animation-duration: 45s;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    gap: 14px;
+
+    &__item {
+      min-width: 200px;
+      height: 140px;
+    }
+
+    &--animated {
+      animation-duration: 35s;
+
+      &-reversed {
+        animation-duration: 35s;
+      }
+    }
+  }
 }

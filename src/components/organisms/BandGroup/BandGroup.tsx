@@ -1,4 +1,4 @@
-import { Band } from '@/components/molecules/Band';
+import { Band } from '@/components/atoms/Band';
 import './BandGroup.scss';
 
 export default function BandGroup() {
