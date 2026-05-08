@@ -42,4 +42,13 @@
       height: 60%;
     }
   }
+
+  // extra small mobile (320px)
+  @media (max-width: 360px) {
+    gap: 12px;
+
+    &::after {
+      height: 55%;
+    }
+  }
 }

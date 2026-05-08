@@ -24,4 +24,14 @@
       font-size: 14px;
     }
   }
+
+  @media (max-width: 360px) {
+    &__logo {
+      font-size: 13px;
+    }
+
+    &__link {
+      font-size: 13px;
+    }
+  }
 }

@@ -81,3 +81,26 @@
     }
   }
 }
+
+@media (max-width: 360px) {
+  .footer {
+    &__inner {
+      gap: 18px;
+    }
+
+    &__brand {
+      transform: scale(0.35);
+    }
+
+    &__socials {
+      min-width: 100%;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    &__copyright p {
+      font-size: 10px;
+      line-height: 14px;
+    }
+  }
+}
