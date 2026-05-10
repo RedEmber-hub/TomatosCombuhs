@@ -41,20 +41,40 @@ svg {
   display: flex;
 }
 
-.cursor-pointer {
-  cursor: pointer;
-}
-
-.flex {
+// скелетон
+.skeleton {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
 
-  &_column {
-    flex-direction: column;
+  &--animated {
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -150px;
+      height: 100%;
+      width: 150px;
+      background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #e8e8e8 50%, rgba(255, 255, 255, 0) 100%);
+      // loadSkeleton - имя анимации
+      animation: loadSkeleton 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
   }
 }
 
-@for $i from 1 through 64 {
-  .gap-#{$i} {
-    gap: #{$i}px;
+// анимация скелетона
+@keyframes loadSkeleton {
+  from {
+    left: -150px;
+  }
+
+  to {
+    left: 100%;
   }
 }

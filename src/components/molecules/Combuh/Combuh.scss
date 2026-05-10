@@ -59,8 +59,14 @@
 
   &__img {
     width: 100%;
-    height: auto;
+    max-height: 200px;
     overflow: hidden;
     border-radius: 8px;
+  }
+
+  @media (max-width: 480px) {
+    &__img {
+      height: 100px;
+    }
   }
 }

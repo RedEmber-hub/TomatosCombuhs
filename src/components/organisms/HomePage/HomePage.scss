@@ -79,14 +79,17 @@
     font-size: 36px;
     font-weight: 500;
     line-height: 48px;
-    color: rgb(255, 255, 255);
+    color: oklch(0.924 0.12 95.746);
+    text-shadow:
+      0 0 2px oklch(0.924 0.12 95.746 / 0.85),
+      0 0 6px oklch(0.924 0.12 95.746 / 0.6);
     margin: 0 0 12px;
   }
 
   &__last-video-subtitle {
-    font-size: 16px;
-    line-height: 24px;
-    color: oklch(0.707 0.022 261.325);
+    font-size: 18px;
+    line-height: 26px;
+    color: oklch(0.809 0.105 251.813);
   }
 
   &__last-video-player {
@@ -124,6 +127,7 @@
 
   &__table {
     width: 100%;
+    max-height: 900px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -261,6 +265,10 @@
       margin: 0 0 32px;
     }
 
+    &__last-video-video-title {
+      font-size: 14px;
+    }
+
     &__last-video {
       display: flex;
       flex-direction: column;
@@ -307,6 +315,10 @@
 
     &__last-video-header {
       margin: 0 0 32px;
+    }
+
+    &__last-video-video-title {
+      font-size: 12px;
     }
 
     &__footer {
