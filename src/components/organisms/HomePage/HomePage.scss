@@ -63,7 +63,7 @@
     flex-direction: column;
     width: 100%;
 
-    margin: 0 0 126px;
+    margin: 0 0 100px;
     padding: 0 104px;
   }
 
@@ -116,6 +116,33 @@
     font-size: 16px;
     line-height: 24px;
     color: oklch(0.707 0.022 261.325);
+  }
+
+  &__comment-item {
+    display: flex;
+    width: fit-content;
+    gap: 24px;
+    position: relative;
+    max-width: 920px;
+    padding: 12px 16px;
+    margin: 24px 0;
+
+    font-size: 18px;
+    color: oklch(0.943 0.029 294.588);
+    line-height: 1.4;
+
+    border-radius: 30px;
+
+    background: linear-gradient(135deg, oklab(0.606 0.096545 -0.230606 / 0.18), oklab(0.606 0.096545 -0.230606 / 0.05));
+    border: 1px solid oklab(0.606 0.096545 -0.230606 / 0.35);
+
+    box-shadow:
+      0 10px 30px oklab(0.606 0.096545 -0.230606 / 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
   }
 
   &__filters {

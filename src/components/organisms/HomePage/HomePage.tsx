@@ -8,12 +8,13 @@ import { Combuh } from '@/components/molecules/Combuh';
 import { MOCK_COMBOS } from '@/mocks/combuh';
 import { BandGroup } from '../BandGroup';
 import { Footer } from '@/components/molecules/Footer';
-import { fetchLatestVideo } from '@/api/youtube';
+import { fetchLatestVideo } from '@/api/video';
 import { Video } from '@/components/atoms/Video';
 import { useQuery } from '@tanstack/react-query';
 import { VideoResponse } from '@/types/videoResponse';
 import { Pagination } from '@/components/molecules/Pagination';
 import { EmptyState } from '../EmptyState';
+import { fetchVideoComments } from '@/api/comments';
 
 export default function HomePage() {
   const [selectedTribe, setSelectedTribe] = useState('Все');
@@ -32,6 +33,17 @@ export default function HomePage() {
     queryKey: ['latestVideo', channelId],
     queryFn: () => fetchLatestVideo(channelId),
     staleTime: 1000 * 60 * 10,
+  });
+
+  interface Comment {
+    text: string;
+    author: string;
+  }
+
+  const { data: comments } = useQuery<Comment[]>({
+    queryKey: ['comments', video?.videoId],
+    queryFn: () => fetchVideoComments(video!.videoId),
+    enabled: !!video?.videoId,
   });
 
   const pageSize = 2;
@@ -68,6 +80,16 @@ export default function HomePage() {
 
           <div className="homePage__last-video-meta">
             <h3 className="homePage__last-video-video-title">{video?.title}</h3>
+          </div>
+
+          <div className="homePage__comment">
+            {comments?.slice(6, 8).map((comment) => (
+              <div key={comment.text} className="homePage__comment-item">
+                <p>{comment.author}</p>
+
+                <p>{comment.text}</p>
+              </div>
+            ))}
           </div>
         </div>
 
