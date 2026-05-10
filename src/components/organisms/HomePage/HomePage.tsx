@@ -83,7 +83,7 @@ export default function HomePage() {
           </div>
 
           <div className="homePage__comment">
-            {comments?.slice(6, 8).map((comment) => (
+            {comments?.slice(6, 9).map((comment) => (
               <div key={comment.text} className="homePage__comment-item">
                 <p>{comment.author}</p>
 
