@@ -1,4 +1,4 @@
-export interface Comments {
+export interface YoutubeCommentResponse {
   snippet: {
     topLevelComment: {
       snippet: {

@@ -11,10 +11,11 @@ import { Footer } from '@/components/molecules/Footer';
 import { fetchLatestVideo } from '@/api/video';
 import { Video } from '@/components/atoms/Video';
 import { useQuery } from '@tanstack/react-query';
-import { VideoResponse } from '@/types/videoResponse';
 import { Pagination } from '@/components/molecules/Pagination';
 import { EmptyState } from '../EmptyState';
 import { fetchVideoComments } from '@/api/comments';
+import { YoutubeVideoResponse } from '@/types/YoutubeVideoResponse';
+import { Comment } from '@/types/comment';
 
 export default function HomePage() {
   const [selectedTribe, setSelectedTribe] = useState('Все');
@@ -29,16 +30,11 @@ export default function HomePage() {
 
   const channelId = 'UCtar_hVOtXpCdR0u3bKjtRA'; //id канала Томатоса на YouTube
 
-  const { data: video } = useQuery<VideoResponse | null>({
+  const { data: video } = useQuery<YoutubeVideoResponse | null>({
     queryKey: ['latestVideo', channelId],
     queryFn: () => fetchLatestVideo(channelId),
     staleTime: 1000 * 60 * 10,
   });
-
-  interface Comment {
-    text: string;
-    author: string;
-  }
 
   const { data: comments } = useQuery<Comment[]>({
     queryKey: ['comments', video?.videoId],

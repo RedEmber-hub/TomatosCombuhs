@@ -1,4 +1,4 @@
-import { Comments } from '@/types/comments';
+import { YoutubeCommentResponse } from '@/types/YoutubeCommentResponse';
 
 const API_KEY = 'AIzaSyBREHGSbC4mDknAD5Amw6HyzWXGpEtXlc8';
 
@@ -10,7 +10,7 @@ export async function fetchVideoComments(videoId: string) {
   const data = await response.json();
 
   return (
-    data.items?.map((item: Comments) => ({
+    data.items?.map((item: YoutubeCommentResponse) => ({
       text: item.snippet.topLevelComment.snippet.textDisplay,
       author: item.snippet.topLevelComment.snippet.authorDisplayName,
     })) || []
